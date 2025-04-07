@@ -1,6 +1,6 @@
 import { FitnessCenterRounded, TimelapseRounded } from "@mui/icons-material";
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Card = styled.div`
   flex: 1;
@@ -17,7 +17,6 @@ const Card = styled.div`
     padding: 12px 14px;
   }
 `;
-
 const Category = styled.div`
   width: fit-content;
   font-size: 14px;
@@ -27,13 +26,11 @@ const Category = styled.div`
   padding: 4px 10px;
   border-radius: 8px;
 `;
-
 const Name = styled.div`
   font-size: 20px;
   color: ${({ theme }) => theme.text_primary};
   font-weight: 600;
 `;
-
 const Sets = styled.div`
   font-size: 15px;
   color: ${({ theme }) => theme.text_secondary};
@@ -41,12 +38,10 @@ const Sets = styled.div`
   display: flex;
   gap: 6px;
 `;
-
 const Flex = styled.div`
   display: flex;
   gap: 16px;
 `;
-
 const Details = styled.div`
   font-size: 15px;
   color: ${({ theme }) => theme.text_primary};
@@ -56,24 +51,26 @@ const Details = styled.div`
   gap: 6px;
 `;
 
-const WorkoutCard = () => {
+const WorkoutCard = ({ workout }) => {
   return (
     <Card>
-        <Category>#Legs</Category>
-        <Name>Back Squat</Name>
-        <Sets>Count: 5sets X 10reps</Sets>
-        <Flex>
-            <Details>
-                <FitnessCenterRounded sx={{ fontSize: "20px" }} />
-                30kg
-            </Details>
-            <Details>
-                <TimelapseRounded sx={{ fontSize: "20px" }} />
-                10min
-            </Details>
-        </Flex>
+      <Category>#{workout?.category}</Category>
+      <Name>{workout?.workoutName}</Name>
+      <Sets>
+        Count: {workout?.sets} sets X {workout?.reps} reps
+      </Sets>
+      <Flex>
+        <Details>
+          <FitnessCenterRounded sx={{ fontSize: "20px" }} />
+          {workout?.weight} kg
+        </Details>
+        <Details>
+          <TimelapseRounded sx={{ fontSize: "20px" }} />
+          {workout?.duration} min
+        </Details>
+      </Flex>
     </Card>
-  )
-}
+  );
+};
 
-export default WorkoutCard
+export default WorkoutCard;
